@@ -236,7 +236,7 @@ const LatestTrack = () => {
                                             Listen on Spotify
                                         </PlayButton>
                                         <PlayButton
-                                            href={`https://www.youtube.com/results?search_query=${track.name}`}
+                                            href={`https://www.youtube.com/watch?v=LzbGadeMY1M`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             $bgColor="#000"
