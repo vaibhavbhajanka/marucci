@@ -1,95 +1,106 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+// 'use client';
+// import Head from 'next/head';
+// import CarouselComponent from '@/app/components/CarouselComponent';
+// import LatestTrack from "@/app/components/LatestTrack";
+// import VideoCarousel from "@/app/components/VideoCarousal";
+// import styled from 'styled-components';
+// import Footer from "@/app/components/Footer";
+// import SocialMedia from "@/app/components/SocialMedia"; // Import styled-components
+//
+// // Elegant Gradient Separator
+// const GradientSeparator = styled.div`
+//     height: 4px;
+//     width: 80%;
+//     margin: 50px auto;
+//     background: linear-gradient(to right, rgba(0, 0, 0, 0), #333, rgba(0, 0, 0, 0));
+//     opacity: 0.8;
+//     border-radius: 2px;
+// `;
+//
+// export default function Home() {
+//     return (
+//         <div>
+//             <Head>
+//                 <title>Marucci Official Website</title>
+//                 <meta name="description" content="Official website of Marucci"/>
+//                 {/*<link rel="icon" href="/favicon.ico"/>*/}
+//             </Head>
+//
+//             <main>
+//                 <SocialMedia/>
+//                 {/* Carousel Section */}
+//                 <section id="home">
+//                     <CarouselComponent />
+//                 </section>
+//
+//                 {/* Latest Track Section */}
+//                 <section id="latest">
+//                     <LatestTrack />
+//                 </section>
+//
+//                 {/* Elegant Gradient Separator */}
+//                 <GradientSeparator />
+//
+//                 {/* Video Carousel Section */}
+//                 <section id="videos">
+//                     <VideoCarousel />
+//                 </section>
+//                 <Footer></Footer>
+//             </main>
+//         </div>
+//     );
+// }
+'use client';
+import Head from 'next/head';
+import CarouselComponent from '@/app/components/CarouselComponent';
+import LatestTrack from "@/app/components/LatestTrack";
+import VideoCarousel from "@/app/components/VideoCarousal";
+import styled from 'styled-components';
+import Footer from "@/app/components/Footer";
+import SocialMedia from "@/app/components/SocialMedia";
+
+// Elegant Gradient Separator
+const GradientSeparator = styled.div`
+    height: 4px;
+    width: 80%;
+    margin: 50px auto;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), #333, rgba(0, 0, 0, 0));
+    opacity: 0.8;
+    border-radius: 2px;
+`;
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
+    return (
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <Head>
+                <title>Marucci Official Website</title>
+                <meta name="description" content="Official website of Marucci"/>
+
+                {/* Favicon */}
+                <link rel="icon" href="/logo-white.png" type="image/png" sizes="32x32"/>
+            </Head>
+
+            <main>
+                <SocialMedia/>
+                {/* Carousel Section */}
+                <section id="home">
+                    <CarouselComponent />
+                </section>
+
+                {/* Latest Track Section */}
+                <section id="latest">
+                    <LatestTrack />
+                </section>
+
+                {/* Elegant Gradient Separator */}
+                <GradientSeparator />
+
+                {/* Video Carousel Section */}
+                <section id="videos">
+                    <VideoCarousel />
+                </section>
+                <Footer />
+            </main>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+    );
 }
