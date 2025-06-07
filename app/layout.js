@@ -1,5 +1,6 @@
 import { Inter,  Fjalla_One} from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "./LanguageContext";
 
 // const inter = Inter({ subsets: ["latin"] });
 const anton = Fjalla_One({ preload: true, subsets: ["latin"], weight: "400" });
@@ -12,7 +13,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-    <body className={anton.className}>{children}
+    <body className={anton.className}>
+      <LanguageProvider>
+        {children}
+      </LanguageProvider>
     </body>
     </html>
   );

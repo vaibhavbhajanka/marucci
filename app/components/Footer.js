@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { FaSpotify, FaInstagram, FaFacebookF, FaTiktok, FaGlobe } from 'react-icons/fa';
 import Image from "next/image";
+import { useLanguage } from "../LanguageContext";
 
 const FooterContainer = styled.footer`
     background-color: #0a0a0a;
@@ -59,6 +60,7 @@ const FooterText = styled.p`
 `;
 
 const Footer = () => {
+    const { t } = useLanguage();
     return (
         <FooterContainer>
             <Image
@@ -68,7 +70,7 @@ const Footer = () => {
                 height={50}
             />
 
-            <SocialIcons>
+            <SocialIcons aria-label={t("social_media_strip")}>
                 <Link href="https://open.spotify.com/artist/2ur81OwaZ3OwOLYlOJjzJV?si=UuS3v05_Qle7PbejNkuBMQ" target="_blank" rel="noopener noreferrer">
                     <FaSpotify title="Spotify" />
                 </Link>

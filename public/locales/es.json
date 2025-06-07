@@ -1,0 +1,20 @@
+{
+  "latest_track": "Última Canción",
+  "toggle_language": "English",
+  "hero_headline": "Descubre la música de Marucci",
+  "hero_subtitle": "Escucha, comparte y disfruta en tu idioma.",
+  "video_carousel_title": "Videos",
+  "social_media_strip": "Sigue a Marucci",
+  "listen_on_spotify": "Escuchar en Spotify",
+  "listen_on_youtube": "Escuchar en YouTube",
+  "language_prompt": "¿Te gustaría ver el sitio en inglés?",
+  "dismiss": "Cerrar",
+  "home": "Inicio",
+  "discography": "Discografía",
+  "marucci_story": "Historia de Marucci",
+  "loading_latest_track": "Cargando la última canción...",
+  "failed_to_load_track": "No se pudo cargar la canción. Por favor, inténtalo de nuevo más tarde.",
+  "now_available": "Ya Disponible",
+  "album": "Álbum",
+  "spotify_embed_unavailable": "El reproductor de Spotify no está disponible. Prueba en YouTube."
+} 

@@ -3,6 +3,8 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import SpotifyIcon from 'mdi-react/SpotifyIcon';
 import YoutubeIcon from 'mdi-react/YoutubeIcon';
+import { useLanguage } from "../LanguageContext";
+import { useState, useEffect } from 'react';
 
 // Styled-components for the container and the heading
 const Container = styled.div`
@@ -155,75 +157,62 @@ const LoadingText = styled.p`
 `;
 
 const LatestTrack = () => {
-    // const [track, setTrack] = useState(null);
-    // const [loading, setLoading] = useState(true);
-    //
-    // useEffect(() => {
-    //     const fetchLatestTrack = async () => {
-    //         const artistId = '2ur81OwaZ3OwOLYlOJjzJV'; // Replace with the specific artist's ID
-    //         try {
-    //             const response = await fetch(`/api/spotify?artistId=${artistId}`);
-    //             const data = await response.json();
-    //             setTrack(data);
-    //         } catch (error) {
-    //             console.error('Error fetching track:', error);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     };
-    //
-    //     fetchLatestTrack();
-    // }, []);
-    const track = {
-            "name": "Superheroe",
-            "album": {
-                "name": "Superheroe",
-                // "images": [
-                //     {
-                //         "url": "https://i.scdn.co/image/ab67616d0000b273c0a41a477dbf45f00f3168f2",
-                //         "height": 640,
-                //         "width": 640
-                //     },
-                //     {
-                //         "url": "https://i.scdn.co/image/ab67616d00001e02c0a41a477dbf45f00f3168f2",
-                //         "height": 300,
-                //         "width": 300
-                //     },
-                //     {
-                //         "url": "https://i.scdn.co/image/ab67616d00004851c0a41a477dbf45f00f3168f2",
-                //         "height": 64,
-                //         "width": 64
-                //     }
-                // ]
-            },
-            "external_urls": {
-                "spotify": "https://open.spotify.com/track/2Sekr9Rdcbr5PvudQnlvgM"
-            }
+    const { t } = useLanguage();
+    const [spotifyError, setSpotifyError] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [track, setTrack] = useState(null);
+
+    useEffect(() => {
+        setLoading(true);
+        setError(null);
+        fetch('/api/spotify-latest-track')
+            .then(res => {
+                if (!res.ok) throw new Error('Failed to fetch latest track');
+                return res.json();
+            })
+            .then(data => {
+                setTrack(data);
+                setLoading(false);
+            })
+            .catch(err => {
+                setError(err.message);
+                setLoading(false);
+            });
+    }, []);
+
+    const TranslatedThumbnail = styled(Thumbnail)`
+        &::after {
+            content: '${t("now_available")}';
         }
-    const loading =false;
+    `;
+    // Extract Spotify track ID from URL
+    const getSpotifyTrackId = (url) => {
+        const match = url.match(/track\/([a-zA-Z0-9]+)/);
+        return match ? match[1] : null;
+    };
+    const spotifyTrackId = track && track.external_urls ? getSpotifyTrackId(track.external_urls.spotify) : null;
     return (
         <Container>
             <ContentWrapper>
                 <HeadingWrapper>
-                    <Heading>LATEST TRACKS</Heading>
+                    <Heading>{t("latest_track")}</Heading>
                 </HeadingWrapper>
                 <TrackSection>
                     {
                         loading ? (
                             <LoadingWrapper>
-                                {/*<Image*/}
-                                {/*    src="/api/placeholder/200/200"*/}
-                                {/*    alt="Logo"*/}
-                                {/*    width={200}*/}
-                                {/*    height={200}*/}
-                                {/*/>*/}
-                                <LoadingText>Loading latest track...</LoadingText>
+                                <LoadingText>{t("loading_latest_track")}</LoadingText>
+                            </LoadingWrapper>
+                        ) : error ? (
+                            <LoadingWrapper>
+                                <LoadingText>{t("failed_to_load_track")}</LoadingText>
                             </LoadingWrapper>
                         ) : track ? (
                             <>
                                 <TrackInfo>
                                     <TrackName>{track.name}</TrackName>
-                                    <ArtistName>ALBUM | {track.album.name}</ArtistName>
+                                    <ArtistName>{t("album").toUpperCase()} | {track.album.name}</ArtistName>
                                     <ButtonContainer>
                                         <PlayButton
                                             href={track.external_urls.spotify}
@@ -233,37 +222,63 @@ const LatestTrack = () => {
                                             $hoverColor="#1ed760"
                                         >
                                             <SpotifyIcon />
-                                            Listen on Spotify
+                                            {t("listen_on_spotify")}
                                         </PlayButton>
                                         <PlayButton
-                                            href={`https://www.youtube.com/watch?v=LzbGadeMY1M`}
+                                            href={track.youtube_url || `https://www.youtube.com`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             $bgColor="#000"
                                             $hoverColor="#ff4d4d"
                                         >
                                             <YoutubeIcon />
-                                            Watch on YouTube
+                                            {t("listen_on_youtube")}
                                         </PlayButton>
                                     </ButtonContainer>
+                                    {/* Spotify Embed */}
+                                    {spotifyTrackId && !spotifyError && (
+                                        <div style={{ margin: '20px 0', maxWidth: 400 }}>
+                                            <iframe
+                                                src={`https://open.spotify.com/embed/track/${spotifyTrackId}?utm_source=generator`}
+                                                width="100%"
+                                                height="80"
+                                                frameBorder="0"
+                                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                                loading="lazy"
+                                                title="Spotify Player"
+                                                style={{ borderRadius: 12, minWidth: 200 }}
+                                                onError={() => setSpotifyError(true)}
+                                            />
+                                        </div>
+                                    )}
+                                    {/* Fallback if Spotify embed fails */}
+                                    {spotifyError && (
+                                        <div style={{ margin: '20px 0' }}>
+                                            <PlayButton
+                                                href={`https://www.youtube.com/watch?v=LzbGadeMY1M`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                $bgColor="#ff0000"
+                                                $hoverColor="#ff4d4d"
+                                            >
+                                                <YoutubeIcon />
+                                                {t("listen_on_youtube")}
+                                            </PlayButton>
+                                            <div style={{ color: '#ffaaaa', marginTop: 8, fontWeight: 'bold' }}>{t("spotify_embed_unavailable")}</div>
+                                        </div>
+                                    )}
                                 </TrackInfo>
-
-                                <Thumbnail>
+                                <TranslatedThumbnail>
                                     <Image
-                                        src={'/super.webp'}
+                                        src={track.album.images && track.album.images[0] ? track.album.images[0].url : '/super.webp'}
                                         alt={track.name}
-                                        fill // Correct usage of the fill prop
-                                        // priority={true} // Priority for faster loading
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Define sizes for responsive images
-                                        style={{ objectFit: 'cover' }} // Use CSS for object-fit
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        style={{ objectFit: 'cover' }}
                                     />
-                                </Thumbnail>
+                                </TranslatedThumbnail>
                             </>
-                        ) : (
-                            <LoadingWrapper>
-                                <LoadingText>Failed to load track. Please try again later.</LoadingText>
-                            </LoadingWrapper>
-                        )
+                        ) : null
                     }
                 </TrackSection>
             </ContentWrapper>

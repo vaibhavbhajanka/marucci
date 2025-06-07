@@ -1,8 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Marucci Official Website
 
-## Getting Started
+A modern, visually engaging portfolio and promotional site for the spanish artist **Marucci**. Built with Next.js and styled-components, the site showcases Marucci's music, videos, and social presence in a sleek, interactive format.
 
-First, run the development server:
+## 🚀 Features
+
+- **Hero Carousel:** Full-screen image carousel with Marucci's branding and navigation to key sections.
+- **Latest Track Section:** Highlights Marucci's newest music release, with direct links to Spotify and YouTube.
+- **Video Carousel:** Interactive carousel featuring Marucci's latest music videos, playable directly on the site.
+- **Social Media Strip:** Fixed sidebar with quick links to Marucci's Spotify, Instagram, Facebook, TikTok, and official website.
+- **Footer:** Includes branding, social links, and copyright.
+
+## 👥 Audience
+
+Fans of Marucci, music listeners, and industry professionals looking to discover or connect with the artist.
+
+## 🛠️ Tech Stack
+
+- **Next.js** for server-side rendering and routing
+- **styled-components** for modern, maintainable styling
+- **react-slick** for carousels
+- **React Icons** for social media links
+
+## 🏁 Getting Started
+
+To run the development server:
 
 ```bash
 npm run dev
@@ -14,11 +35,11 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+For questions or feedback, please contact Marucci via the social links on the site.
 
 ## Learn More
 

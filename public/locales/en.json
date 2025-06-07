@@ -1,0 +1,20 @@
+{
+  "latest_track": "Latest Track",
+  "toggle_language": "Español",
+  "hero_headline": "Discover Marucci's Music",
+  "hero_subtitle": "Listen, share, and enjoy in your language.",
+  "video_carousel_title": "Videos",
+  "social_media_strip": "Follow Marucci",
+  "listen_on_spotify": "Listen on Spotify",
+  "listen_on_youtube": "Listen on YouTube",
+  "language_prompt": "Would you like to view the site in Spanish?",
+  "dismiss": "Dismiss",
+  "home": "Home",
+  "discography": "Discography",
+  "marucci_story": "Marucci's Story",
+  "loading_latest_track": "Loading latest track...",
+  "failed_to_load_track": "Failed to load track. Please try again later.",
+  "now_available": "Now Available",
+  "album": "Album",
+  "spotify_embed_unavailable": "Spotify player unavailable. Try YouTube instead."
+} 

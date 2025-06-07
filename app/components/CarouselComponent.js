@@ -3,6 +3,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { useLanguage } from "../LanguageContext";
 
 const CarouselWrapper = styled.div`
     position: relative;
@@ -107,6 +108,7 @@ const HalfBackground = styled.div`
 
 
 const CarouselComponent = () => {
+    const { t } = useLanguage();
     const settings = {
         dots: false,
         infinite: true,
@@ -127,11 +129,11 @@ const CarouselComponent = () => {
         <CarouselWrapper>
             {/* Navigation Bar with anchor links */}
             <NavigationBar>
-                <NavButton onClick={() => scrollToSection('home')}>HOME</NavButton>
-                <NavButton onClick={() => scrollToSection('latest')}>LATEST</NavButton>
-                <NavButton onClick={() => scrollToSection('videos')}>VIDEOS</NavButton>
-                <NavButton onClick={() => scrollToSection('home')}>DISCOGRAPHY</NavButton>
-                <NavButton onClick={() => scrollToSection('home')}>MARUCCI&apos;S STORY</NavButton>
+                <NavButton onClick={() => scrollToSection('home')}>{t("home")}</NavButton>
+                <NavButton onClick={() => scrollToSection('latest')}>{t("latest_track")}</NavButton>
+                <NavButton onClick={() => scrollToSection('videos')}>{t("video_carousel_title")}</NavButton>
+                <NavButton onClick={() => scrollToSection('home')}>{t("discography")}</NavButton>
+                <NavButton onClick={() => scrollToSection('home')}>{t("marucci_story")}</NavButton>
             </NavigationBar>
 
             {/* Logo Overlay */}

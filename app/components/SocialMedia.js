@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FaSpotify, FaInstagram, FaFacebookF, FaTiktok, FaGlobe } from 'react-icons/fa';
+import { useLanguage } from "../LanguageContext";
 
 // Styled component for the vertical strip
 const SocialMediaStrip = styled.div`
@@ -31,8 +32,9 @@ const SocialMediaIcon = styled.a`
 `;
 
 const SocialMedia = () => {
+    const { t } = useLanguage();
     return (
-        <SocialMediaStrip>
+        <SocialMediaStrip aria-label={t("social_media_strip")}>
             <SocialMediaIcon
                 href="https://open.spotify.com/artist/2ur81OwaZ3OwOLYlOJjzJV?si=UuS3v05_Qle7PbejNkuBMQ"
                 target="_blank"
