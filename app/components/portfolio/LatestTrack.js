@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import SpotifyIcon from 'mdi-react/SpotifyIcon';
 import YoutubeIcon from 'mdi-react/YoutubeIcon';
-import { useLanguage } from "../LanguageContext";
+import { useLanguage } from "../../hooks/LanguageContext";
 import { useState, useEffect } from 'react';
 
 // Styled-components for the container and the heading

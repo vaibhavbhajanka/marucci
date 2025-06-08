@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FaSpotify, FaInstagram, FaFacebookF, FaTiktok, FaGlobe } from 'react-icons/fa';
-import { useLanguage } from "../LanguageContext";
+import { useLanguage } from "../../hooks/LanguageContext";
 
 // Styled component for the vertical strip
 const SocialMediaStrip = styled.div`

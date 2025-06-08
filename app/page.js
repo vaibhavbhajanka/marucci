@@ -1,13 +1,15 @@
 'use client';
 import Head from 'next/head';
-import CarouselComponent from '@/app/components/CarouselComponent';
-import LatestTrack from "@/app/components/LatestTrack";
-import VideoCarousel from "@/app/components/VideoCarousal";
+import CarouselComponent from '@/app/components/portfolio/CarouselComponent';
+import LatestTrack from "@/app/components/portfolio/LatestTrack";
+import VideoCarousel from "@/app/components/portfolio/VideoCarousal";
 import styled from 'styled-components';
-import Footer from "@/app/components/Footer";
-import SocialMedia from "@/app/components/SocialMedia";
-import LanguageToggle from "./components/LanguageToggle";
-import { useLanguage } from "./LanguageContext";
+import Footer from "@/app/components/layout/Footer";
+import SocialMedia from "@/app/components/common/SocialMedia";
+import MarucciStory from "@/app/components/portfolio/MarucciStory";
+import MarucciStorySection from "@/app/components/portfolio/AboutMarucci";
+import LanguageToggle from "./components/common/LanguageToggle";
+import { useLanguage } from "./hooks/LanguageContext";
 import React, { useState, useEffect } from 'react';
 
 // Elegant Gradient Separator
@@ -45,6 +47,7 @@ export default function Home() {
     const { t } = useLanguage();
     const [hydrated, setHydrated] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [showStory, setShowStory] = useState(false);
 
     useEffect(() => {
         setHydrated(true);
@@ -90,6 +93,28 @@ export default function Home() {
                         <section id="videos">
                             <VideoCarousel />
                         </section>
+                        {/* Marucci's Story Section */}
+                        <section id="marucci-story" style={{ marginTop: 60, marginBottom: 60, maxWidth: '80%', marginLeft: 'auto', marginRight: 'auto', position: 'relative' }}>
+                          <div style={{ display: 'flex', padding: '2rem 0rem', position: 'relative', width: '50%' }}>
+                            <h1 style={{
+                              fontSize: '2.5rem',
+                              fontWeight: 600,
+                              color: 'white',
+                              textTransform: 'uppercase',
+                              letterSpacing: '2px',
+                              padding: '10px 20px',
+                              width: '100%',
+                              background: 'linear-gradient(to right, black 75%, rgba(0, 0, 0, 0))',
+                              textAlign: 'left',
+                              margin: 0
+                            }}>
+                              Marucci's Story
+                            </h1>
+                          </div>
+                          <MarucciStorySection onReadMore={() => setShowStory(true)} />
+                        </section>
+                        {/* Marucci's Story Modal */}
+                        <MarucciStory open={showStory} onClose={() => setShowStory(false)} />
                         <Footer />
                     </main>
                 </>

@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import styled from 'styled-components';
 import PlayCircleOutlineIcon from 'mdi-react/PlayCircleOutlineIcon';
-import { useLanguage } from "../LanguageContext";
+import { useLanguage } from "../../hooks/LanguageContext";
 
 const Container = styled.div`
     --swiper-navigation-size: 1.5rem;
@@ -218,17 +218,23 @@ const VideoCarousel = () => {
                 modules={[EffectCoverflow, Pagination, Navigation]}
                 className="swiper_container"
             >
-                {videos.map((video) => (
-                    <SwiperSlideStyled key={video.videoId}>
-                        <Thumbnail
-                            $thumbnail={video.thumbnail}
-                            onClick={() => handleVideoClick(video.videoId, video.title)}
-                        >
-                            <TitleStrip>{video.title}</TitleStrip>
-                            <PlayCircleOutlineIcon />
-                        </Thumbnail>
-                    </SwiperSlideStyled>
-                ))}
+                {Array.isArray(videos) && videos.length > 0 ? (
+                    videos.map((video) => (
+                        <SwiperSlideStyled key={video.videoId}>
+                            <Thumbnail
+                                $thumbnail={video.thumbnail}
+                                onClick={() => handleVideoClick(video.videoId, video.title)}
+                            >
+                                <TitleStrip>{video.title}</TitleStrip>
+                                <PlayCircleOutlineIcon />
+                            </Thumbnail>
+                        </SwiperSlideStyled>
+                    ))
+                ) : (
+                    <div style={{ color: '#fff', textAlign: 'center', padding: '3rem 0', fontSize: '1.25rem' }}>
+                        Sorry, videos are currently unavailable. Please try again later.
+                    </div>
+                )}
 
                 <SliderControler>
                     <SliderArrow className="swiper-button-prev slider-arrow">

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { FaSpotify, FaInstagram, FaFacebookF, FaTiktok, FaGlobe } from 'react-icons/fa';
 import Image from "next/image";
-import { useLanguage } from "../LanguageContext";
+import { useLanguage } from "../../hooks/LanguageContext";
 
 const FooterContainer = styled.footer`
     background-color: #0a0a0a;

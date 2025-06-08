@@ -1,6 +1,6 @@
 import { Inter,  Fjalla_One} from "next/font/google";
-import "./globals.css";
-import { LanguageProvider } from "./LanguageContext";
+import "./styles/globals.css";
+import { LanguageProvider } from "./hooks/LanguageContext";
 
 // const inter = Inter({ subsets: ["latin"] });
 const anton = Fjalla_One({ preload: true, subsets: ["latin"], weight: "400" });
