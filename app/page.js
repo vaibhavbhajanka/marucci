@@ -108,7 +108,8 @@ export default function Home() {
                               textAlign: 'left',
                               margin: 0
                             }}>
-                              Marucci's Story
+
+                              Marucci&apos;s Story
                             </h1>
                           </div>
                           <MarucciStorySection onReadMore={() => setShowStory(true)} />
