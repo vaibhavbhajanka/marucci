@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Inter } from 'next/font/google';
 import styled from 'styled-components';
 import { useLanguage } from '../../hooks/LanguageContext';
 import Image from 'next/image';
@@ -28,6 +29,8 @@ const ModalContent = styled.div`
   padding: 0 0 32px 0;
   position: relative;
   animation: modalFadeIn 0.7s cubic-bezier(.22,.61,.36,1);
+  font-family: ${inter.style.fontFamily};
+  font-weight: 300;
   @keyframes modalFadeIn {
     from { opacity: 0; transform: translateY(32px) scale(0.97); }
     to { opacity: 1; transform: none; }
@@ -189,6 +192,8 @@ This humble young man has captivated fans with his electrifying performances, pe
 };
 
 // Styled components for section layout
+const inter = Inter({ subsets: ['latin'], weight: ['300','400'] });
+
 const SectionsWrapper = styled.div`
   padding: 32px;
   color: #fff;
@@ -224,6 +229,8 @@ const SectionText = styled.div`
   font-size: 1.13rem;
   line-height: 1.7;
   margin-bottom: 8px;
+  font-family: ${inter.style.fontFamily};
+  font-weight: 300;
   @media (max-width: 900px) {
     margin-bottom: 0;
   }

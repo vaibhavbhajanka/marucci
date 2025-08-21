@@ -1,5 +1,4 @@
 'use client';
-import Head from 'next/head';
 import CarouselComponent from '@/app/components/portfolio/CarouselComponent';
 import LatestTrack from "@/app/components/portfolio/LatestTrack";
 import VideoCarousel from "@/app/components/portfolio/VideoCarousal";
@@ -71,12 +70,6 @@ export default function Home() {
             {!loading && (
                 <>
                     <LanguageToggle />
-                    <Head>
-                        <title>Marucci Official Website</title>
-                        <meta name="description" content="Official website of Marucci"/>
-                        {/* Favicon */}
-                        <link rel="icon" href="/logo-white.png" type="image/png" sizes="32x32"/>
-                    </Head>
                     <main>
                         <SocialMedia/>
                         {/* Carousel Section */}

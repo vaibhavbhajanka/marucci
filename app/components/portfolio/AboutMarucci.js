@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useLanguage } from '../../hooks/LanguageContext';
 import Image from 'next/image';
+import { Inter } from 'next/font/google';
 
 const Section = styled.section`
   position: relative;
@@ -87,12 +88,16 @@ const Headline = styled.h2`
   }
 `;
 
+const inter = Inter({ subsets: ['latin'], weight: ['300','400'] });
+
 const Tagline = styled.div`
   font-size: 1.19rem;
   color: #e0e0e0;
   margin-bottom: 18px;
   font-style: italic;
   opacity: 0.82;
+  font-family: ${inter.style.fontFamily};
+  font-weight: 300;
   animation: fadeInTagline 1.1s cubic-bezier(.22,.61,.36,1);
   @keyframes fadeInTagline {
     from { opacity: 0; transform: translateY(18px); }
@@ -105,6 +110,8 @@ const Intro = styled.p`
   color: #f5f5f5;
   margin: 0 0 18px 0;
   line-height: 1.7;
+  font-family: ${inter.style.fontFamily};
+  font-weight: 300;
 `;
 
 const ReadMoreBtn = styled.button`

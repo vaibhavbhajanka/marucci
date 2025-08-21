@@ -1,22 +1,28 @@
-# Marucci Official Website
+# Marucci
 
-A modern, visually engaging portfolio and promotional site for the spanish artist **Marucci**. Built with Next.js and styled-components, the site showcases Marucci's music, videos, and social presence in a sleek, interactive format.
+This is Marucci's official website. He's a Spanish artist who wanted a clean, black and white portfolio site to showcase his music and connect with fans.
 
-## 🚀 Features
+I built this while talking with Ángel about his vision for the site. He had some specific ideas about the design—he wanted that half-photo layout on the front page, YouTube and Spotify integration, and the ability to see his latest videos right on the site.
 
-- **Hero Carousel:** Full-screen image carousel with Marucci's branding and navigation to key sections.
-- **Latest Track Section:** Highlights Marucci's newest music release, with direct links to Spotify and YouTube.
-- **Video Carousel:** Interactive carousel featuring Marucci's latest music videos, playable directly on the site.
-- **Social Media Strip:** Fixed sidebar with quick links to Marucci's Spotify, Instagram, Facebook, TikTok, and official website.
-- **Footer:** Includes branding, social links, and copyright.
+## What's here
 
-## 👥 Audience
+The site has a full-screen photo carousel when you first visit, plus a section highlighting Ángel's newest track with direct Spotify and YouTube links (and an embedded Spotify player when available). There's also a video carousel where you can watch his latest music videos without leaving the site. I added a sidebar with all his social media links so fans can easily follow him everywhere.
 
-Fans of Marucci, music listeners, and industry professionals looking to discover or connect with the artist.
+You can switch between English and Spanish at any time. Most of the site content supports both languages, including the “Marucci's Story” section, which opens as a clean modal and uses a lighter reading font for long-form text.
 
-## 🛠️ Tech Stack
+Under the hood, the latest track comes from a server route with caching, and the site includes basic SEO setup so links look good when shared.
 
-- **Next.js** for server-side rendering and routing
-- **styled-components** for modern, maintainable styling
-- **react-slick** for carousels
-- **React Icons** for social media links
+## Built with
+
+Next.js (App Router), styled-components, and a few other tools to make the carousels and social links work smoothly. Nothing too fancy — just focused on making it look good and work well.
+
+- Carousels: react-slick and Swiper
+- Fonts: Fjalla One for headings, Inter for body text (lighter where it matters)
+- Icons: mdi-react, react-icons
+- Images: next/image for responsive, optimized images
+- API: server route for Spotify latest track with short revalidation
+- SEO: metadata, sitemap, robots
+
+## Notes
+
+This is still a work in progress. Ángel loved the initial look and feel. I'm polishing the mobile experience, tightening accessibility (keyboard controls and motion preferences), and putting together the discography section. Basic tests and CI will follow once the main content is locked.
